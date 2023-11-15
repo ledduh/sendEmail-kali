@@ -1,0 +1,28 @@
+sudo apt install git
+sudo apt install nano
+
+git clone https://github.com/mogaal/sendemail.git
+
+cd sendemail
+sudo nano +1906 sendEmail
+
+<!-- Comment out using # -->
+if (! IO::Socket::SSL->start_SSL($SERVER, SSL_version => 'SSLv3 TLSv1')) {
+<!-- Replace commented line above with the one below -->
+if (! IO::Socket::SSL->start_SSL($SERVER)) {
+
+<!-- save -->
+ctrl+x
+y
+enter
+
+copy the sendEmail file to /usr/local/bin
+sudo cp -r sendEmail /usr/local/bin
+
+sendemail -f me@example.com -t receive@example.com -u "Subject" -m "Body" -s smtp2go.com:587 
+-xu registeredstmpemail -xp password -a /path to file
+
+additional options 
+--cc 
+--bcc
+-o message-file=FILE 
